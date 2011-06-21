@@ -1,0 +1,42 @@
+ACL Plugin for CakePHP 1.3
+===========================
+
+Website: http://www.alaxos.net/blaxos/pages/view/plugin_acl
+Author: Nicolas Rod <nico@alaxos.com>
+License: http://www.opensource.org/licenses/mit-license.php The MIT License
+
+Version: 1.0.6
+----------------
+Date: 2011-04-27
+
+- added a parameter in bootstrap.php to support role foreign key's names that do not follow CakePHP conventions
+
+Version: 1.0.5
+----------------
+Date: 2011-02-19
+
+- bug correction: the role foreign key is now created by using the Inflector class to be correctly generated even for camelcased role model names
+- bug correcton: updated the way the roles and users display names are configured to prevent some situations where the use of an existing database field 
+  was not possible. It also improves performance by creating new virtual fields only if necessary.
+
+Credit: thanks to Paul Marshall for his help on this version (http://www.paulmarshall.us)
+
+Version: 1.0.4
+----------------
+Date: 2011-01-22
+
+- the aros/role_permissions action can now be loaded through Ajax to prevent a request timeout when there are too many permissions to check
+- new search filters on users roles page and users permissions page
+- updated the way new controller and/or actions detection is done to allow to see the warning even after a redirection from /admin/acl
+- replaced $html and $form by $this->Html and $this->Form in views to respect CakePHP best practices
+
+Version: 1.0.3
+----------------
+Date: 2010-12-05
+
+- Added support of plugins placed in ROOT/plugins
+- Corrected a bug preventing to set a user specific permission in some cases
+- Added automatic verification that the user and role models act as ACL requesters
+- No writable 'tmp' folder needed anymore 
+- Some code refactoring (moved functions from the AclAppController to new components)
+- Added this CHANGELOG file... ;-)
