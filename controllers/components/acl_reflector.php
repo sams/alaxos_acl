@@ -139,7 +139,14 @@ class AclReflectorComponent
     						}
     						else
     						{
-    						    $plugins_controllers[] = array('file' => $fileName, 'name' => Inflector::humanize($plugin_name) . "/" . $controller_class_name);
+    						    
+    							if ($filter_default_controller)
+    							{
+    								$plugins_controllers[] = array('file' => $fileName, 'name' => Inflector::humanize($plugin_name) . "/" . $controller_class_name);
+    							}
+    							else {
+    								$plugins_controllers[] = array('file' => $fileName, 'name' => $controller_class_name);
+    							}
     						}
     					}
 					}
