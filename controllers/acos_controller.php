@@ -36,6 +36,21 @@ class AcosController extends AclAppController {
 	    }
 	}
 	
+	function admin_prune_acos($run = null)
+	{
+	    if(isset($run))
+	    {
+    		$logs = $this->AclManager->prune_acos();
+
+    		$this->set('logs', $logs);
+    		$this->set('run', true);
+	    }
+	    else
+	    {
+	        $this->set('run', false);
+	    }
+	}
+	
 	function admin_build_acl($run = null)
 	{
 	    if(isset($run))
