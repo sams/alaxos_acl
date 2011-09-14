@@ -372,6 +372,95 @@ class AclManagerComponent
 	}
 	
 	/**
+	 * Remove all ACOs that don't have any corresponding controllers or actions.
+	 *
+	 * @return array log of removed ACO nodes
+	 */
+	public function prune_acos()
+	{
+	    $aco =& $this->Acl->Aco;
+
+	    $log = array();
+
+	    $controllers = $this->AclReflector->get_all_app_controllers();
+	    $controllers = Set::extract('/name', $controllers);
+	    $pluginsControllers = $this->AclReflector->get_all_plugins_controllers(false);
+	    $pluginsControllers = Set::extract('/name', $pluginsControllers);
+
+	    $root = $aco->node('controllers');
+		$rootId = $root['0']['Aco']['id'];
+
+	    /******************************************
+	     * Get list of all ACOs and check for each ACO if controller/action exists
+	     */
+		$acos = $aco->find('all', array(
+			'recursive' => -1
+		));
+		foreach ($acos as $val) {
+			$alias = $val['Aco']['alias'];
+			$id = $val['Aco']['id'];
+			$parentId = $val['Aco']['parent_id'];
+
+			if ($parentId === $rootId)
+			{
+				if (!in_array($alias, $controllers) && !in_array($alias, $pluginsControllers))
+				{
+				    /******************************************
+				     * Delete root ACOs without corresponding controllers
+				     */
+
+					$aco->delete($id);
+					$aco->deleteAll(array('parent_id' => $id));
+
+					$log[] = 'Removed Aco node for ' . $alias;
+				}
+			}
+			else if ($parentId !== null)
+			{
+				$parent = $aco->find('first', array(
+					'conditions' => array('id' => $parentId),
+					'recursive' => -1
+				));
+				$parentAlias = $parent['Aco']['alias'];
+
+				if ($parent)
+				{
+					if (!in_array($alias, $pluginsControllers)) {
+					    /******************************************
+					     * Find all methods of this controller
+					     */
+
+		    			$actions = $this->AclReflector->get_controller_actions($parentAlias);
+
+						if (!in_array($alias, $actions))
+						{
+						    /******************************************
+						     * Delete ACOs without corresponding actions
+						     */
+
+							$aco->delete($id);
+
+							$log[] = 'Removed Aco node for '.$parentAlias.'/'.$alias;
+						}
+					}
+				}
+				else
+				{
+				    /******************************************
+				     * No parent controller found, remove ACO
+				     */
+
+					$aco->delete($id);
+
+					$log[] = 'Removed Aco node for '.$parentAlias.'/'.$alias;
+				}
+			}
+		}
+
+	    return $log;
+	}
+	
+	/**
 	 *
 	 * @param AclNode $aro_nodes The Aro model hierarchy
 	 * @param string $aco_path The Aco path to check for
