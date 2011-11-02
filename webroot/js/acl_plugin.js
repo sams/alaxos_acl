@@ -3,6 +3,51 @@
  * @license  http://www.opensource.org/licenses/mit-license.php The MIT License
  * @link     http://www.alaxos.ch
  */
+function init_register_user_controller_toggle_right(app_root_url, user_id, plugin, controller, missing_aco_text)
+{
+	var url = app_root_url + "admin/acl/aros/get_user_controller_permission/" + user_id + "/plugin:" + plugin + "/controller:" + controller;
+
+	$.ajax({	url: url,
+				dataType: "html", 
+				cache: false,
+				success: function (data, textStatus) 
+				{
+					//alert(data);
+					permissions = jQuery.parseJSON(data);
+					//alert(permissions);
+					
+					for(var action in permissions)
+					{
+						var start_granted = false;
+						var span_id       = "right_" + plugin + "_" + user_id + "_" + controller + "_" + action; 
+						
+						if(permissions[action] == true || permissions[action] == false)
+						{
+							if(permissions[action] == true)
+							{
+								icon_html = "<img src=\"" + app_root_url + "/acl/img/design/tick.png"  + "\" class=\"pointer\" alt=\"granted\" />";
+								start_granted = true;
+							}
+							else
+							{
+								icon_html = "<img src=\"" + app_root_url + "/acl/img/design/cross.png"  + "\" class=\"pointer\" alt=\"denied\" />";
+								start_granted = false;
+							}
+							
+							$("#" + span_id).html(icon_html);
+							
+							register_user_toggle_right(start_granted, app_root_url, span_id, user_id, plugin, controller, action);
+						}
+						else
+						{
+							icon_html = "<img src=\"" + app_root_url + "/acl/img/design/important16.png"  + "\" alt=\"" + missing_aco_text + "\" title=\"" + missing_aco_text + "\" />";
+							
+							$("#" + span_id).html(icon_html);
+						}
+					}
+				}
+			});
+}
 function register_user_toggle_right(start_granted, app_root_url, span_id, user_id, plugin, controller, action)
 {
 	if(start_granted)

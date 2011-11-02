@@ -12,6 +12,13 @@
 Configure :: write('acl.aro.role.model', 'Role');
 
 /*
+ * The primary key of the role model
+ *
+ * (can be left empty if your primary key's name follows CakePHP conventions)('id')
+ */
+Configure :: write('acl.aro.role.primary_key', '');
+
+/*
  * The foreign key's name for the roles
  *
  * (can be left empty if your foreign key's name follows CakePHP conventions)(e.g. 'role_id')
@@ -22,6 +29,13 @@ Configure :: write('acl.aro.role.foreign_key', '');
  * The model name used for the user (typically 'User')
  */
 Configure :: write('acl.aro.user.model', 'User');
+
+/*
+ * The primary key of the user model
+ *
+ * (can be left empty if your primary key's name follows CakePHP conventions)('id')
+ */
+Configure :: write('acl.aro.user.primary_key', '');
 
 /*
  * The name of the database field that can be used to display the role name
@@ -54,11 +68,15 @@ Configure :: write('acl.check_act_as_requester', true);
 /*
  * Add the ACL plugin 'locale' folder to your application locales' folders
  */
-App :: build(array('locales' => APP . 'plugins' . DS . 'acl' . DS . 'locale'));
-//App :: build(array('locales' => ROOT . DS . 'plugins' . DS . 'acl' . DS . 'locale')); //Depending where you placed the plugin, uncomment this line
+App :: build(array('locales' => App :: pluginPath('Acl') . DS . 'locale'));
 
 /*
  * Indicates whether the roles permissions page must load through Ajax
  */
-Configure :: write('acl.gui.roles_permissions.ajax', false);
+Configure :: write('acl.gui.roles_permissions.ajax', true);
+
+/*
+ * Indicates whether the users permissions page must load through Ajax
+ */
+Configure :: write('acl.gui.users_permissions.ajax', true);
 ?>

@@ -1,9 +1,53 @@
-ACL Plugin for CakePHP 1.3
+ACL Plugin for CakePHP 2.0
 ===========================
 
 Website: http://www.alaxos.net/blaxos/pages/view/plugin_acl
 Author: Nicolas Rod <nico@alaxos.com>
 License: http://www.opensource.org/licenses/mit-license.php The MIT License
+
+Version: 2.0.0-RC3
+------------------
+Date: 2011-11-01
+
+- Removed RequestHandler from ArosController as its method isAjax() is deprecated (use $this->request->is('ajax') instead)
+
+Version: 2.0.0-beta
+-------------------
+Date: 2011-09-19
+
+- Adaptation for CakePHP 2.0
+
+    No new functionnalities in this version, but the code has been updated for the new Cake 2.0-RC1
+    Renamed classes, use App::uses() instead of old App::import(), updated forms url, etc.
+
+
+Version: 1.0.7
+----------------
+Date: 2011-07-18
+
+- the aros/users_permissions action can now be loaded through Ajax to prevent a request timeout when there are too many permissions to check
+- added an indication when a user have specific permissions. New action to delete these specific permissions.
+- corrected the way to get the plugins' paths in order to support custom paths added to App::path('plugins');
+- corrected the way the plugins parent ACO are generated to support camel cased plugin names 
+- added a parameter in bootstrap.php to support roles and users primary keys' names that do not follow CakePHP conventions
+- eventual errors raised by the user model when updating the users role are now displayed for a better understanding of the problem
+- new brazilian portuguese (pt_BR) translation
+- performance improvements in find queries by limiting retrieved data
+
+Credit:
+
+- Elias Farah 
+    
+    For the brazilian portuguese translation po file and for his help to add the possibility to customize the roles and users primary keys' names
+    
+- Paul Marshall (http://www.paulmarshall.us)
+    
+    For pointing out a better way the get the plugins' paths and for ideas to improve performance in queries  
+        
+- Ilya (http://www.skychip.ru) and Gregorz
+    
+    For identifying a bug with camel cased plugins' names and pointing out the solution
+    
 
 Version: 1.0.6
 ----------------
