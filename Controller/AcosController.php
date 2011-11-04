@@ -21,11 +21,11 @@ class AcosController extends AclAppController {
 	    {
     		if($this->Aco->deleteAll(array('id > 0')))
     	    {
-    	        $this->Session->setFlash(__d('acl', 'The ACO table has been cleared', true), 'flash_message', null, 'plugin_acl');
+    	        $this->Session->setFlash(__d('acl', 'The ACO table has been cleared'), 'flash_message', null, 'plugin_acl');
     	    }
     	    else
     	    {
-    	        $this->Session->setFlash(__d('acl', 'The ACO table could not be cleared', true), 'flash_error', null, 'plugin_acl');
+    	        $this->Session->setFlash(__d('acl', 'The ACO table could not be cleared'), 'flash_error', null, 'plugin_acl');
     	    }
     	    
     	    $this->set('run', true);

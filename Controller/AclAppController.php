@@ -70,7 +70,7 @@ class AclAppController extends AppController
 		}
 		else
 		{
-			$this->Session->setFlash(__d('acl', 'The role model name is unknown. The ACL plugin bootstrap.php file has to be loaded in order to work. (see the README file)', true), 'flash_error', null, 'plugin_acl');
+			$this->Session->setFlash(__d('acl', 'The role model name is unknown. The ACL plugin bootstrap.php file has to be loaded in order to work. (see the README file)'), 'flash_error', null, 'plugin_acl');
 		}
 	}
 	
