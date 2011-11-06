@@ -66,10 +66,10 @@ Configure :: write('acl.user.display_name', "User.username");
 Configure :: write('acl.check_act_as_requester', true);
 
 /*
- * Add the ACL plugin 'locale' folder to your application locales' folders
+ * Add the ACL plugin 'Locale' folder to your application locales' folders
  */
-// CakePlugin::load('Acl' => array('Bootstrap' => true)); then we don't need this line
-//App :: build(array('locales' => App :: pluginPath('Acl') . DS . 'Locale'));
+// CakePlugin::load('Acl' => array('bootstrap' => true, 'routes' => true)); then we don't need this line
+App::build(array('locales' => App::pluginPath('Acl') . DS . 'Locale'));
 
 /*
  * Indicates whether the roles permissions page must load through Ajax
