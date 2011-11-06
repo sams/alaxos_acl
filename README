@@ -27,14 +27,11 @@ Installation
 	in the 'Acl/Config/bootstrap.php' file.
 	
 	You have two options to use these settings, as CakePHP doesn't automatically load 
-	the bootstrap.php files in plugins:
+	the bootstrap.php files in plugins. If you are loading Cake default routes then you
+	don't need to load the routes just the bootstrap in step 1:
 	
-	1.	Copy all the settings in your app/config/bootstrap.php file
-	
-	or
-	
-	2.	Load the plugin bootstrap with the plugin
-	
-	        CakePlugin::load('Acl', array('bootstrap' => true));
+	1a.	CakePlugin::load('Acl', array('bootstrap' => true, 'routes' => true));
+	1b.	CakePlugin::loadAll(array('Acl' => array('bootstrap' => true, 'routes' => true)));
+	2.	reconfigure settings with after loading plugin Configure::write(..)
 
 - Access the ACL plugin by navigating to /admin/acl
