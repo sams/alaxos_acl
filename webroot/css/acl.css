@@ -3,6 +3,11 @@
  * @license  http://www.opensource.org/licenses/mit-license.php The MIT License
  * @link     http://www.alaxos.ch
  */
+
+#header .backToApp,
+#header .backToApp a {
+	color: white;
+}
  
 #plugin_acl
 {
