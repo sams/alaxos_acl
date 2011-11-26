@@ -5,6 +5,7 @@
  * @license  http://www.opensource.org/licenses/mit-license.php The MIT License
  * @link     http://www.alaxos.ch
  */
+App::uses('AppController', 'Controller');
 class AclAppController extends AppController
 {
     var $components = array('Acl', 'Auth', 'Session', 'Acl.AclManager', 'Acl.AclReflector');

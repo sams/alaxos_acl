@@ -5,6 +5,7 @@
  * @license  http://www.opensource.org/licenses/mit-license.php The MIT License
  * @link     http://www.alaxos.ch
  */
+App::uses('AclAppController', 'Acl.Controller');
 class ArosController extends AclAppController
 {
 
@@ -444,6 +445,8 @@ class ArosController extends AclAppController
 
             if(isset($this->params['named']['ajax']))
             {
+		//$this->viewPath.= DS . 'ajax';
+		$this->layout = 'ajax';
                 $this->render('admin_ajax_user_permissions');
             }
 	    }
@@ -494,8 +497,8 @@ class ArosController extends AclAppController
 	
 	function admin_grant_all_controllers($role_id)
 	{
-	    $role =& $this->{Configure :: read('acl.aro.role.model')};
-        $role->id = $role_id;
+	$role =& $this->{Configure :: read('acl.aro.role.model')};
+	$role->id = $role_id;
         
 		/*
          * Check if the Role exists in the ARO table
@@ -617,7 +620,9 @@ class ArosController extends AclAppController
         
         if($this->request->is('ajax'))
         {
-            $this->render('ajax_role_granted');
+		$this->viewPath.= DS . 'ajax';
+		$this->layout = 'ajax';
+		$this->render('role_granted');
         }
         else
         {
@@ -650,7 +655,9 @@ class ArosController extends AclAppController
         
         if($this->request->is('ajax'))
         {
-            $this->render('ajax_role_denied');
+		$this->viewPath.= DS . 'ajax';
+		$this->layout = 'ajax';
+            $this->render('role_denied');
         }
         else
         {
@@ -702,6 +709,7 @@ class ArosController extends AclAppController
         	Configure::write('debug', 0); //-> to disable printing of generation time preventing correct JSON parsing
         	echo json_encode($user_controller_permissions);
         	$this->autoRender = false;
+		exit();
         }
         else
         {
@@ -747,7 +755,9 @@ class ArosController extends AclAppController
         
         if($this->request->is('ajax'))
         {
-            $this->render('ajax_user_granted');
+		$this->viewPath.= DS . 'ajax';
+		$this->layout = 'ajax';
+            $this->render('user_granted');
         }
         else
         {
@@ -794,7 +804,9 @@ class ArosController extends AclAppController
         
         if($this->request->is('ajax'))
         {
-            $this->render('ajax_user_denied');
+		$this->viewPath.= DS . 'ajax';
+		$this->layout = 'ajax';
+            $this->render('user_denied');
         }
         else
         {
