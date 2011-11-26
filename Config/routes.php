@@ -1,34 +1,14 @@
 <?php
-	$prefixes = array('admin');
-        $plugin = array('Acl');
+
+	Router::parseExtensions();
 
         App::uses('PluginShortRoute', 'Routing/Route');
-        foreach ($plugin as $key => $value) {
-                $plugin[$key] = Inflector::underscore($value);
-        }
-        $pluginPattern = implode('|', $plugin);
-        $match = array('plugin' => $pluginPattern);
-        $shortParams = array('routeClass' => 'PluginShortRoute', 'plugin' => $pluginPattern);
+	$plugin = Inflector::underscore('Acl');
+        $match = array('plugin' => 'acl');
+        $shortParams = array('routeClass' => 'PluginShortRoute', 'plugin' => 'acl');
 
-        foreach ($prefixes as $prefix) {
-                $params = array('prefix' => $prefix, $prefix => true);
-                $indexParams = $params + array('action' => 'index');
-                Router::connect("/{$prefix}/:plugin", $indexParams, $shortParams);
-                Router::connect("/{$prefix}/:plugin/:controller", $indexParams, $match);
-                Router::connect("/{$prefix}/:plugin/:controller/:action/*", $params, $match);
-        }
-
-	foreach ($prefixes as $prefix) {
-		$params = array('prefix' => $prefix, $prefix => true);
-		$indexParams = $params + array('action' => 'index');
-		Router::connect("/{$prefix}/:controller", $indexParams);
-		Router::connect("/{$prefix}/:controller/:action/*", $params);
-	}
-
-	$namedConfig = Router::namedConfig();
-	if ($namedConfig['rules'] === false) {
-		Router::connectNamed(true);
-	}
-
-	unset($namedConfig, $params, $indexParams, $prefix, $prefixes, $shortParams, $match,
-		$pluginPattern, $plugins, $key, $value);
+	$params = array('plugin' => 'acl', 'prefix' => 'admin', 'admin' => true);
+	$indexParams = $params + array('action' => 'index');
+	Router::connect("/admin/acl", $indexParams, $shortParams);
+	Router::connect("/admin/acl/:controller", $indexParams, $match);
+	Router::connect("/admin/acl/:controller/:action/*", $params, $match);
