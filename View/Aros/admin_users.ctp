@@ -79,7 +79,3 @@ if($missing_aro)
 <?php
 }
 ?>
-
-<?php
-echo $this->element('design/footer');
-?>

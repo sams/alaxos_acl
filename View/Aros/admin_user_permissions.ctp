@@ -1,6 +1,6 @@
 <?php
-echo $this->Html->script('/acl/js/jquery');
-echo $this->Html->script('/acl/js/acl_plugin');
+$this->Html->script('/acl/js/jquery', array('inline' => false));
+$this->Html->script('/acl/js/acl_plugin', array('inline' => false));
 
 echo $this->element('design/header');
 ?>
@@ -243,7 +243,4 @@ else
     ?>
 <?php
 }
-?>
-<?php
-echo $this->element('design/footer');
 ?>

@@ -50,7 +50,3 @@ else
 	echo '</p>';
 }
 ?>
-
-<?php
-echo $this->element('design/footer');
-?>

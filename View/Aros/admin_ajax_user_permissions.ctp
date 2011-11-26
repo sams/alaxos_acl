@@ -1,6 +1,6 @@
 <?php
-echo $this->Html->script('/acl/js/jquery');
-echo $this->Html->script('/acl/js/acl_plugin');
+$this->Html->script('/acl/js/jquery', array('inline' => false));
+$this->Html->script('/acl/js/acl_plugin', array('inline' => false));
 
 echo $this->element('design/header');
 ?>
@@ -162,6 +162,3 @@ echo $this->element('Aros/links');
     echo '&nbsp;&nbsp;&nbsp;';
     echo $this->Html->image('/acl/img/design/cross.png') . ' ' . __d('acl', 'blocked');
     ?>
-<?php
-echo $this->element('design/footer');
-?>

@@ -33,7 +33,3 @@ echo $this->element('design/header', array('no_acl_links' => true));
 	?>
 
 </div>
-
-<?php
-echo $this->element('design/footer');
-?>
