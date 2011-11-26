@@ -1,8 +1,3 @@
-<?php
-echo $this->Html->css('/acl/css/acl.css');
-?>
-<div id="plugin_acl">
-	
 	<?php
 	echo $this->Session->flash('plugin_acl');
 	?>

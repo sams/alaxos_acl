@@ -1,5 +1,5 @@
 <?php
-echo $this->element('design/header');
+echo $this->element('design/nav');
 ?>
 
 <?php
@@ -19,6 +19,4 @@ echo $this->element('Acos/links');
     echo '<p>';
     echo $this->Html->link($this->Html->image('/acl/img/design/cross.png') . ' ' . __d('acl', 'Clear ACOs'), '/admin/acl/acos/empty_acos/run', array('confirm' => __d('acl', 'Are you sure you want to destroy all existing ACOs ?'), 'escape' => false));
     echo '</p>';
-
-echo $this->element('design/footer');
 ?>

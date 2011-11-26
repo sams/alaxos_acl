@@ -1,5 +1,5 @@
 <?php
-echo $this->element('design/header');
+echo $this->element('design/nav');
 ?>
 
 <?php
@@ -37,6 +37,4 @@ else
     echo $this->Html->link(__d('acl', 'Build'), '/admin/acl/acos/build_acl/run');
     echo '</p>';
 }
-
-echo $this->element('design/footer');
 ?>

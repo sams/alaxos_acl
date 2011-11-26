@@ -1,5 +1,5 @@
 <?php 
-echo $this->element('design/header', array('no_acl_links' => true));
+echo $this->element('design/nav', array('no_acl_links' => true));
 ?>
 
 <div class="error">

@@ -1,11 +1,7 @@
 <?php 
-echo $this->element('design/header');
+echo $this->element('design/nav');
 ?>
 
 <?php 
 echo $this->element('Acos/links');
-?>
-
-<?php
-echo $this->element('design/footer');
 ?>

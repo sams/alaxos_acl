@@ -2,7 +2,7 @@
 $this->Html->script('/acl/js/jquery', array('inline' => false));
 $this->Html->script('/acl/js/acl_plugin', array('inline' => false));
 
-echo $this->element('design/header');
+echo $this->element('design/nav');
 ?>
 
 <?php
