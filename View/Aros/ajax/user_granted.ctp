@@ -1,5 +1,4 @@
 <?php
-$this->layout = 'ajax';
 echo '<span id="right_' . $plugin . '_' . $user_id . '_' . $controller_name . '_' . $action . '">';
     
     if(isset($acl_error))
