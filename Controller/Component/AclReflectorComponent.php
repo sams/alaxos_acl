@@ -1,11 +1,12 @@
 <?php
+App::uses('Component', 'Controller');
 class AclReflectorComponent extends Component
 {
 	private $controller = null;
 
 	/****************************************************************************************/
     
-    public function initialize(&$controller)
+    public function initialize(Controller $controller)
 	{
 	    $this->controller = $controller;
 	}
