@@ -546,7 +546,7 @@ class ArosController extends AclAppController
         $aro_node = $this->Acl->Aro->node($role_data);
         if(!empty($aro_node))
         {
-	        $plugin_name        = $this->params['named']['plugin'];
+	        $plugin_name        = isset($this->params['named']['plugin']) ? $this->params['named']['plugin'] : '';
 	        $controller_name    = $this->params['named']['controller'];
 	        $controller_actions = $this->AclReflector->get_controller_actions($controller_name);
 	        
@@ -667,7 +667,7 @@ class ArosController extends AclAppController
         $aro_node = $this->Acl->Aro->node($user_data);
         if(!empty($aro_node))
         {
-	        $plugin_name        = $this->params['named']['plugin'];
+	        $plugin_name        = isset($this->params['named']['plugin']) ? $this->params['named']['plugin'] : '';
 	        $controller_name    = $this->params['named']['controller'];
 	        $controller_actions = $this->AclReflector->get_controller_actions($controller_name);
 
