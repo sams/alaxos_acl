@@ -5,6 +5,15 @@ Website: http://www.alaxos.net/blaxos/pages/view/plugin_acl
 Author: Nicolas Rod <nico@alaxos.com>
 License: http://www.opensource.org/licenses/mit-license.php The MIT License
 
+Version: 2.0.0-RC4
+------------------
+Date: 2011-11-26
+
+- Removed plugin named parameter from Ajax requests when plugin is empty
+- Removed doubled slashes from icons src urls
+
+  Special thanks to Dave and Sam Sherlock for their feedbacks and ideas   
+
 Version: 2.0.0-RC3
 ------------------
 Date: 2011-11-01
